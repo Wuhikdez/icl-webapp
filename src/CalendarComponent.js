@@ -17,8 +17,16 @@ export default class CalendarComponent extends Component {
     componentDidMount() {
         const { year } = this.props.match.params
         let calendar = new Calendar(year)
-        console.log(calendar)
         this.setState({ calendar: calendar, year: year })
+    }
+
+    componentDidUpdate() {
+        const { year } = this.props.match.params
+        if (this.state.year != year) {
+            const { year } = this.props.match.params
+            let calendar = new Calendar(year)
+            this.setState({ calendar: calendar, year: year })
+        }
     }
 
     render() {
@@ -39,7 +47,7 @@ export default class CalendarComponent extends Component {
                     >
                         <Flag tag={item.winner.getFlagId()} size={18} />
                         <div style={{ marginLeft: 4 }}>{item.winner.fullname()}</div>
-                        {}
+                        { }
                     </div>}
                     {item.winner && !item.winner.firstname && <div className="table-item-link" style={{ width: 240, display: 'flex' }}>
                         <div style={{ marginLeft: 22 }}>{item.winner.getTeam(this.state.year).name}</div>

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import RaceResult from './race/RaceResult';
 import { Route, Switch, withRouter } from 'react-router-dom';
@@ -7,6 +6,7 @@ import CyclistComponent from './cyclist/CyclistComponent';
 
 import React, { Component } from 'react'
 import TeamComponent from './teams/TeamComponent';
+import Header from './Header';
 
 class App extends Component {
 
@@ -22,6 +22,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Header history={this.props.history}/>
         <Switch>
           <Route exact path='/' render={(props) => <p onClick={() => this.props.history.push('/calendar/2018')}>2018</p>}></Route>
           <Route path='/race/:race_id/:year/:tag' render={(props) => <RaceResult {...props} />} />

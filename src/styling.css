@@ -17,3 +17,12 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+.button-header {
+    display: inline-block;
+    width: 50px;
+}
+
+.button-header:hover {
+    cursor: pointer;
+}
