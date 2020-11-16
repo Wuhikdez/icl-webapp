@@ -50,7 +50,7 @@ export default class CyclistComponent extends Component {
                     <div style={{ marginTop: 14, marginRight: 8 }}>
                         <Flag tag={this.state.cyclist.getFlagId()} size={40} />
                     </div>
-                    <h2>{this.state.cyclist.fullname()}</h2>
+                    <h2>{this.state.cyclist.firstname + ' ' + this.state.cyclist.lastname}</h2>
                     <h2 style={{ marginLeft: 16, color: 'steelblue' }}>{this.state.team.name}</h2>
                 </div>}
                 {this.state.results && <div>
