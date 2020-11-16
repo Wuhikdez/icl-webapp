@@ -28,7 +28,7 @@ class Cyclist {
     }
 
     fullname() {
-        return this.firstname + ' ' + this.lastname
+        return this.lastname.toUpperCase() + ' ' + this.firstname
     }
 
     getTeam(year) {

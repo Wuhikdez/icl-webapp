@@ -1,10 +1,12 @@
 import Res2018 from '../data/results_2018.json'
+import Res2019 from '../data/results_2019.json'
 import Race from './Race'
 import Cyclist from './Cyclist'
 import Team from './Team'
 
 const Results = {
-    '2018': Res2018
+    '2018': Res2018,
+    '2019': Res2019
 }
 
 class Result {
@@ -31,8 +33,11 @@ class Result {
             let table = final.getWinner()
             if (table && table.cyc_id)
                 return new Cyclist(table.cyc_id)
-            else 
-                return new Team(table.team_id)
+            else {
+                if(table && table.team_id)
+                    return new Team(table.team_id)
+                else return null
+            }
         }
         else return null
     }
@@ -59,7 +64,8 @@ class ResultTable {
     getWinner() {
         let table = this.getTable()
         if (table)
-            return table.find(element => element.pos === '1')
+        // eslint-disable-next-line
+            return table.find(element => element.pos == '1')
         else return null
     }
 }

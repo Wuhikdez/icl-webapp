@@ -30,12 +30,12 @@ export default class CalendarComponent extends Component {
                 </div>
                 {this.state.calendar && this.state.calendar.data.map(item => <div style={{ display: 'flex' }} key={item.id}>
                     <div className="table-item" style={{ width: 32 }}>{item.race_data.start_date}</div>
-                    <div className="table-item-link" style={{ width: 280, display: 'flex' }} onClick={() => this.props.history.push('/race/' + item.race.id.slice(5) + '/' + this.state.year)}>
+                    <div className="table-item-link" style={{ width: 280, display: 'flex' }} onClick={() => this.props.history.push('/race/' + item.race.id + '/' + this.state.year)}>
                         <Flag tag={item.getFlagId()} size={18} />
                         <div style={{ marginLeft: 4 }}>{item.race_data.name}</div>
                     </div>
                     {item.winner && item.winner.firstname && <div className="table-item-link" style={{ width: 240, display: 'flex' }}
-                        onClick={() => this.props.history.push('/cyclist/' + item.winner.id + '/2018')}
+                        onClick={() => this.props.history.push('/cyclist/' + item.winner.id + '/' + this.state.year)}
                     >
                         <Flag tag={item.winner.getFlagId()} size={18} />
                         <div style={{ marginLeft: 4 }}>{item.winner.fullname()}</div>

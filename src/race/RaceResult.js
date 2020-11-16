@@ -19,12 +19,13 @@ export default class RaceResult extends Component {
 
     componentDidMount() {
         const { race_id, year, tag } = this.props.match.params
-        this.setState({ year: year, race_id: 'race_' + race_id })
-        this.getResult('race_' + race_id, year, tag ? tag : 'final')
+        this.setState({ year: year, race_id: race_id })
+        this.getResult(race_id, year, tag ? tag : 'final')
     }
 
     getResult = (race_id, year, tag) => {
         let result = new Result(race_id, year)
+        console.log(result)
         this.setState({ results: result.results, race_data: result.race_data, selector: tag },() => this.setTable(tag, 'main'))
     }
 

@@ -1,4 +1,7 @@
 import teams from '../data/teams.json'
+import cyclists from '../data/cyclists.json'
+import Cyclist from './Cyclist'
+import '../styling.css'
 
 class Team {
 
@@ -14,6 +17,15 @@ class Team {
 
     getTeam(year) {
         return this.seasons.find(season => season.year == year)
+    }
+
+    getCyclists(year) {
+        let cyclists_team = cyclists.filter(cyclist => {
+            let season = cyclist.seasons.find(season => season.year == year)
+            return (season && season.team === this.id)
+        })
+        cyclists_team = cyclists_team.sort((a,b) => a.lastname + a.firstname > b.lastname + b.firstname)
+        return cyclists_team.map(cyclist => new Cyclist(cyclist.id))
     }
 
     /*getFlagId(year) {

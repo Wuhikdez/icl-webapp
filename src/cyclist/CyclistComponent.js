@@ -18,7 +18,7 @@ export default class CyclistComponent extends Component {
 
     componentDidMount() {
         const { cyc_id, year } = this.props.match.params
-        this.setState({ year: year, cyc_id: 'cyc_' + cyc_id })
+        this.setState({ year: year, cyc_id: cyc_id })
         this.getCyclist(cyc_id, year)
     }
 
@@ -44,7 +44,6 @@ export default class CyclistComponent extends Component {
     }
 
     render() {
-        console.log('test')
         return (
             <div style={{ marginLeft: 180 }}>
                 {this.state.cyclist && <div style={{ display: 'flex' }}>
@@ -56,7 +55,7 @@ export default class CyclistComponent extends Component {
                 </div>}
                 {this.state.results && <div>
                     {this.state.results.map(result => <CyclistResult 
-                        key={result.id} race={result.race} results={result.results} year={this.state.year}/>)}
+                        key={result.id} race={result.race} results={result.results} year={this.state.year} history={this.props.history}/>)}
                 </div>}
             </div>
         )

@@ -44,14 +44,16 @@ export default class ResultRow extends Component {
                 <div className="table-item" style={{ width: 32 }}>{this.state.pos}</div>
                 <div className="table-item-link" style={{ width: 200 }}>
                     {this.state.cyclist && <div style={{ display: 'flex' }} 
-                        onClick={() => this.props.history.push('/cyclist/' + this.state.cyclist.id + '/2018')}>
+                        onClick={() => this.props.history.push('/cyclist/' + this.state.cyclist.id + '/' + this.props.year)}>
                         <div style={{marginTop: 0}}>
                             <Flag tag={this.state.cyclist.getFlagId()} size={18} />
                         </div>
                         <div style={{ marginLeft: 4 }}>{this.state.cyclist.fullname()}</div>
                     </div>}
                 </div>
-                <div className="table-item-link" style={{ width: 280 }} >{this.state.teamName && <div>
+                <div className="table-item-link" style={{ width: 280 }} 
+                    onClick={() => this.props.history.push('/team/' + this.state.team.id + '/' + this.props.year)}
+                >{this.state.teamName && <div>
                     {this.state.teamName}
                 </div>}</div>
                 <div className="table-item" style={{ width: 72 }}>{this.state.value}</div>

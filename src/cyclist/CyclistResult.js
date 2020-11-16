@@ -51,7 +51,8 @@ export default class CyclistResult extends Component {
                 {this.state.race && <div style={{ borderBottom: '1px solid #000000', width: 460 }}>
                     <div style={{ display: 'flex' }}>
                         <div style={{ width: 40, paddingLeft: 10 }} className='table-item'>{this.state.classic}</div>
-                        <div className='table-item-link' style={{ display: 'flex', width: 420 }}>
+                        <div className='table-item-link' style={{ display: 'flex', width: 420 }}
+                        onClick={() => this.props.history.push('/race/' + this.state.race.race.id + '/' + this.state.year + '/final')}>
                             <Flag tag={this.state.race.getFlagId()} size={18} />
                             <div style={{ marginLeft: 4 }}>{this.state.race.race_data.name}</div>
                         </div>

@@ -6,6 +6,7 @@ import CalendarComponent from './CalendarComponent';
 import CyclistComponent from './cyclist/CyclistComponent';
 
 import React, { Component } from 'react'
+import TeamComponent from './teams/TeamComponent';
 
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
           <Route path='/race/:race_id/:year' render={(props) => <RaceResult {...props} />} />
           <Route path='/calendar/:year' render={(props) => <CalendarComponent {...props} />} />
           <Route path='/cyclist/:cyc_id/:year' render={(props) => <CyclistComponent {...props} />} />
+          <Route path='/team/:team_id/:year' render={(props) => <TeamComponent {...props} />}/>
         </Switch>
       </div>
     )
