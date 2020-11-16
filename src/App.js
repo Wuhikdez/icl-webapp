@@ -24,7 +24,7 @@ class App extends Component {
       <div>
         <Header history={this.props.history}/>
         <Switch>
-          <Route exact path='/' render={(props) => <p onClick={() => this.props.history.push('/calendar/2018')}>2018</p>}></Route>
+          <Route exact path='/' render={(props) => <p></p>}></Route>
           <Route path='/race/:race_id/:year/:tag' render={(props) => <RaceResult {...props} />} />
           <Route path='/race/:race_id/:year' render={(props) => <RaceResult {...props} />} />
           <Route path='/calendar/:year' render={(props) => <CalendarComponent {...props} />} />
