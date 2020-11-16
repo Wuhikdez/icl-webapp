@@ -26,17 +26,17 @@ export default class Flag extends Component {
 
     getFile = (name) => {
         try {
-            return require('./flags/' + name.toUpperCase() + '.ico')
+            return require('./flags/' + name.toUpperCase() + '.ico').default
         }
         catch {
-            return require('./flags/_olympics.ico')
+            return require('./flags/_olympics.ico').default
         }
     }
 
     render() {
         return (
             <div>
-                <img src={this.state.flag} style={{ height: this.props.size ? this.props.size : 16 }} />
+                {<img src={this.state.flag} style={{ height: this.props.size ? this.props.size : 16 }} />}
             </div>
         )
     }
