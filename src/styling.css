@@ -1,0 +1,19 @@
+.table-item {
+    font-size: 14px;
+    border-bottom: 1px solid #d0d0d0;
+    padding-top: 3px;
+}
+
+.table-item-link {
+    font-size: 14px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #d0d0d0;
+    padding-top: 3px;
+}
+
+.table-item-link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
