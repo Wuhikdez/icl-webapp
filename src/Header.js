@@ -16,6 +16,7 @@ export default class Header extends Component {
                 <div style={{textAlign: "right", marginRight: 120, marginTop: 20}}>
                     <div className="button-header"onClick={() => this.props.history.push('/calendar/2018')}>2018</div>
                     <div className="button-header"onClick={() => this.props.history.push('/calendar/2019')}>2019</div>
+                    <div className="button-header"onClick={() => this.props.history.push('/calendar/2020')}>2020</div>
                 </div>
             </div>
         )

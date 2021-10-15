@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
-import Races from '../data/races.json'
-import Res2018 from '../data/results_2018.json'
 import ResultRow from './ResultRow'
 import Flag from '../icons/Flag'
 import Result from '../assets/Result'
-
-const Results = {
-    '2018': Res2018
-}
 
 export default class RaceResult extends Component {
     constructor(props) {
