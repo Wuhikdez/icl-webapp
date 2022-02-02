@@ -35,7 +35,7 @@ export default class TeamComponent extends Component {
                     <h2 style={{ marginLeft: 16, color: 'steelblue' }}>{this.state.year}</h2>
                 </div>}
                 <div style={{ width: 320 }}>
-                    {this.state.cyclists && this.state.cyclists.map(cyclist => <div className="table-item-link" style={{ width: 200 }} style={{ display: 'flex' }}
+                    {this.state.cyclists && this.state.cyclists.map(cyclist => <div id={cyclist.id} className="table-item-link" style={{ width: 200 }} style={{ display: 'flex' }}
                         onClick={() => this.props.history.push('/cyclist/' + cyclist.id + '/' + this.state.year)}>
                         <div style={{ marginTop: 0 }}>
                             <Flag tag={cyclist.getFlagId()} size={18} />
