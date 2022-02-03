@@ -16,7 +16,7 @@ class Team {
     }
 
     getTeam(year) {
-        return this.seasons.find(season => season.year == year)
+        return this.seasons && this.seasons.find(season => season.year == year)
     }
 
     getCyclists(year) {
@@ -26,6 +26,10 @@ class Team {
         })
         cyclists_team = cyclists_team.sort((a,b) => a.lastname + a.firstname > b.lastname + b.firstname)
         return cyclists_team.map(cyclist => new Cyclist(cyclist.id))
+    }
+
+    getSeasons() {
+        return this.seasons.map(season => season.year).sort()
     }
 
     /*getFlagId(year) {

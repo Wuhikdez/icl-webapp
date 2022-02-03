@@ -3,7 +3,7 @@ import '../styling.css'
 import TeamList from '../assets/TeamList'
 import teams from '../data/teams.json'
 
-export default class TeamsComponent extends Component {
+export default class TeamListComponent extends Component {
 
     constructor(props) {
         super(props)
@@ -41,12 +41,12 @@ export default class TeamsComponent extends Component {
                         : <h2 className="select-year" style={{ marginLeft: 16 }} onClick={() => this.props.history.push('/teams/' + year)}>{year}</h2>)}
                 </div>
                 {this.state.year == "All" && <div style={{ display: 'flex'}} key="header">
-                    <div className="table-item" style={{ width: 280 }}><i>Team Name</i></div>
+                    <div className="table-item" style={{ width: 320 }}><i>Team Name</i></div>
                     <div className="table-item" style={{ width: 72 }}><i>Division</i></div>
-                    <div className="table-item" style={{ width: 72 }}><i>Last Season</i></div>
+                    <div className="table-item" style={{ width: 72 }}><i>Last Raced</i></div>
                 </div>}
                 {this.state.teams && this.state.teams.map(item => <div style={{ display: 'flex' }} key={item.id}>
-                    <div className="table-item-link" style={{ width: 280 }} 
+                    <div className="table-item-link" style={{ width: 320 }} 
                         onClick={() => this.props.history.push('/team/' + item.id + '/' + item.season.year)}
                     >{item.season.name && <div>
                         {item.season.name}

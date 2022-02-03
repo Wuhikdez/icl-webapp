@@ -3,10 +3,11 @@ import RaceResult from './race/RaceResult';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import CalendarComponent from './CalendarComponent';
 import CyclistComponent from './cyclist/CyclistComponent';
+import CyclistListComponent from './cyclist/CyclistListComponent'
 
 import React, { Component } from 'react'
 import TeamComponent from './teams/TeamComponent';
-import TeamsComponent from './teams/TeamsComponent';
+import TeamListComponent from './teams/TeamListComponent';
 import Header from './Header';
 
 class App extends Component {
@@ -30,8 +31,9 @@ class App extends Component {
           <Route path='/race/:race_id/:year' render={(props) => <RaceResult {...props} />} />
           <Route path='/calendar/:year' render={(props) => <CalendarComponent {...props} />} />
           <Route path='/cyclist/:cyc_id/:year' render={(props) => <CyclistComponent {...props} />} />
+          <Route path='/cyclists/:year' render={(props) => <CyclistListComponent {...props} />} />
           <Route path='/team/:team_id/:year' render={(props) => <TeamComponent {...props} />}/>
-          <Route path='/teams/:year' render={(props) => <TeamsComponent {...props} />}/>
+          <Route path='/teams/:year' render={(props) => <TeamListComponent {...props} />}/>
         </Switch>
       </div>
     )
