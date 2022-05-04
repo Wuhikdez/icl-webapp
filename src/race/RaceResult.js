@@ -19,7 +19,6 @@ export default class RaceResult extends Component {
 
     getResult = (race_id, year, tag) => {
         let result = new Result(race_id, year)
-        console.log(result)
         this.setState({ results: result.results, race_data: result.race_data, selector: tag },() => this.setTable(tag, 'main'))
     }
 

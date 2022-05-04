@@ -1,15 +1,7 @@
-import Res2018 from '../data/results_2018.json'
-import Res2019 from '../data/results_2019.json'
-import Res2020 from '../data/results_2020.json'
+import seasons from './Seasons'
 import Race from './Race'
 import Cyclist from './Cyclist'
 import Team from './Team'
-
-const Results = {
-    '2018': Res2018,
-    '2019': Res2019,
-    '2020': Res2020
-}
 
 class Result {
 
@@ -19,7 +11,7 @@ class Result {
     race_data
 
     constructor(race_id, year) {
-        let result = Results[year].find(element => element.id === race_id)
+        let result = seasons()[year].find(element => element.id === race_id)
         Object.assign(this, result)
         if(result)
             this.race_data = new Race(race_id).seasons.find(element => element.year == year)
@@ -48,8 +40,6 @@ class Result {
 class ResultTable {
 
     tables
-    images
-    video
 
     constructor(results, tag) {
         let result = results.find(element => element.tag === tag)

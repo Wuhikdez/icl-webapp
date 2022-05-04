@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Calendar from './assets/Calendar'
 import './styling.css'
 import Flag from './icons/Flag'
+import seasons from './assets/Seasons'
 
 export default class CalendarComponent extends Component {
 
@@ -9,7 +10,8 @@ export default class CalendarComponent extends Component {
         super(props)
 
         this.state = {
-            calendar: null
+            calendar: null,
+            availableYears: Object.keys(seasons())
         }
     }
 
@@ -34,7 +36,10 @@ export default class CalendarComponent extends Component {
             <div style={{ marginLeft: 180 }}>
                 <div style={{ display: 'flex' }}>
                     <h2>Calendar</h2>
-                    <h2 style={{ marginLeft: 16, color: 'steelblue' }}>{this.state.year}</h2>
+                    {this.state.availableYears.map(year =>
+                        this.state.year == year
+                        ? <h2 style={{ marginLeft: 16, color: 'steelblue' }}>{this.state.year}</h2>
+                        : <h2 className="select-year" style={{ marginLeft: 16 }} onClick={() => this.props.history.push('/calendar/' + year)}>{year}</h2>)}
                 </div>
                 {this.state.calendar && this.state.calendar.data.map(item => <div style={{ display: 'flex' }} key={item.id}>
                     <div className="table-item" style={{ width: 32 }}>{item.race_data.start_date}</div>

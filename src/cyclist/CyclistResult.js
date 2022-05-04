@@ -57,7 +57,7 @@ export default class CyclistResult extends Component {
                             <div style={{ marginLeft: 4 }}>{this.state.race.race_data.name}</div>
                         </div>
                     </div>
-                    {this.state.stageResults.map(stage => <CyclistStageRow key={stage.name} stage={stage} />)}
+                    {this.state.stageResults.map(stage => <CyclistStageRow key={stage.name} stage={stage} raceId={this.state.race.race.id} year={this.state.year} history={this.props.history} />)}
                 </div>}
             </div>
         )

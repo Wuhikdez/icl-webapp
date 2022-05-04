@@ -36,6 +36,10 @@ class Cyclist {
         return season ? season.team : undefined
     }
 
+    getContractYears() {
+        return this.seasons.filter(season => season.team != 'team_119').map(season => season.year).sort()
+    }
+
     getResults(year) {
         let cyclist_results = []
         results(year).forEach(x => {

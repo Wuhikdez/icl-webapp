@@ -20,9 +20,16 @@
 
 .button-header {
     display: inline-block;
-    width: 50px;
+    padding-right: 20px;
 }
 
 .button-header:hover {
+    cursor: pointer;
+}
+
+h2.select-year {
+    margin-left: 15px;
+    align-self: center;
+    color: darkgray;
     cursor: pointer;
 }

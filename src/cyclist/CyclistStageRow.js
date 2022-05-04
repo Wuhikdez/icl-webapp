@@ -11,11 +11,14 @@ export default class CyclistStageRow extends Component {
     }
 
     componentDidMount() {
+        let raceId = this.props.raceId
+        let year = this.props.year
         let name = this.props.stage.name
         let results = this.props.stage.results
         let positions = {}
+        let tag = results ? results[0].tag : undefined
         results.forEach(result => positions[result.classification] = result.position)
-        this.setState({ name: name, positions: positions })
+        this.setState({ raceId: raceId, year: year, name: name, positions: positions, tag: tag })
     }
 
     render() {
@@ -25,7 +28,7 @@ export default class CyclistStageRow extends Component {
                     <div style={{ width: 40, paddingLeft: 10 }} className='table-item'>
                         {this.state.positions.main && this.state.positions.main}
                     </div>
-                    <div className='table-item-link' style={{ display: 'flex', width: 180 }}>
+                    <div className='table-item-link' style={{ display: 'flex', width: 180 }} onClick={() => this.state.tag && this.props.history.push('/race/' + this.state.raceId + '/' + this.state.year + '/' + this.state.tag)}>
                         <div style={{ marginLeft: 4 }}>{this.state.name}</div>
                     </div>
                     <div className='table-item' style={{ width: 240, display: 'flex' }}>
