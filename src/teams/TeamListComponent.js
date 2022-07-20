@@ -37,8 +37,8 @@ export default class TeamListComponent extends Component {
                     <h2>Teams</h2>
                     {this.state.availableYears.map(year =>
                         this.state.year == year
-                        ? <h2 style={{ marginLeft: 16, color: 'steelblue' }}>{this.state.year}</h2>
-                        : <h2 className="select-year" style={{ marginLeft: 16 }} onClick={() => this.props.history.push('/teams/' + year)}>{year}</h2>)}
+                        ? <h2 style={{ marginLeft: 16, color: 'steelblue' }} key={year}>{this.state.year}</h2>
+                        : <h2 className="select-year" style={{ marginLeft: 16 }} key={year} onClick={() => this.props.history.push('/teams/' + year)}>{year}</h2>)}
                 </div>
                 {this.state.year == "All" && <div style={{ display: 'flex'}} key="header">
                     <div className="table-item" style={{ width: 320 }}><i>Team Name</i></div>

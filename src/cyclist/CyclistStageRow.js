@@ -28,7 +28,7 @@ export default class CyclistStageRow extends Component {
                     <div style={{ width: 40, paddingLeft: 10 }} className='table-item'>
                         {this.state.positions.main && this.state.positions.main}
                     </div>
-                    <div className='table-item-link' style={{ display: 'flex', width: 180 }} onClick={() => this.state.tag && this.props.history.push('/race/' + this.state.raceId + '/' + this.state.year + '/' + this.state.tag)}>
+                    <div className='table-item-link' style={{ display: 'flex', width: 180 }} onClick={() => (this.state.tag && this.props.history.push('/race/' + this.state.raceId + '/' + this.state.year + '/' + this.state.tag)) || (this.state.name === 'General Classification' && this.props.history.push('/race/' + this.state.raceId + '/' + this.state.year))}>
                         <div style={{ marginLeft: 4 }}>{this.state.name}</div>
                     </div>
                     <div className='table-item' style={{ width: 240, display: 'flex' }}>

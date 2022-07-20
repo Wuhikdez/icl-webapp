@@ -38,10 +38,10 @@ export default class CalendarComponent extends Component {
                     <h2>Calendar</h2>
                     {this.state.availableYears.map(year =>
                         this.state.year == year
-                        ? <h2 style={{ marginLeft: 16, color: 'steelblue' }}>{this.state.year}</h2>
-                        : <h2 className="select-year" style={{ marginLeft: 16 }} onClick={() => this.props.history.push('/calendar/' + year)}>{year}</h2>)}
+                        ? <h2 style={{ marginLeft: 16, color: 'steelblue' }} key={year}>{this.state.year}</h2>
+                        : <h2 className="select-year" style={{ marginLeft: 16 }} key={year} onClick={() => this.props.history.push('/calendar/' + year)}>{year}</h2>)}
                 </div>
-                {this.state.calendar && this.state.calendar.data.map(item => <div style={{ display: 'flex' }} key={item.id}>
+                {this.state.calendar && this.state.calendar.data.map(item => <div style={{ display: 'flex' }} key={item.race.id}>
                     <div className="table-item" style={{ width: 32 }}>{item.race_data.start_date}</div>
                     <div className="table-item-link" style={{ width: 280, display: 'flex' }} onClick={() => this.props.history.push('/race/' + item.race.id + '/' + this.state.year)}>
                         <Flag tag={item.getFlagId()} size={18} />
@@ -54,7 +54,8 @@ export default class CalendarComponent extends Component {
                         <div style={{ marginLeft: 4 }}>{item.winner.fullname()}</div>
                         { }
                     </div>}
-                    {item.winner && !item.winner.firstname && <div className="table-item-link" style={{ width: 240, display: 'flex' }}>
+                    {item.winner && !item.winner.firstname && <div className="table-item-link" style={{ width: 240, display: 'flex' }}
+                        onClick={() => this.props.history.push('/team/' + item.winner.id + '/' + this.state.year)}>
                         <div style={{ marginLeft: 22 }}>{item.winner.getTeam(this.state.year).name}</div>
                     </div>}
                     {!item.winner && <div className="table-item-link" style={{ width: 240, display: 'flex' }} />}

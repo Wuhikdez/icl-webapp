@@ -37,8 +37,18 @@ export default class ResultRow extends Component {
     }
 
     render() {
-        if (this.state.cyclist && !this.state.cyclist.lastname)
-            return null
+        if (this.state.cyclist && !this.state.cyclist.lastname && this.state.team)
+            return (
+                <div style={{ display: 'flex' }}>
+                    <div className="table-item" style={{ width: 32 }}>{this.state.pos}</div>
+                    <div className="table-item-link" style={{ width: 280 }} 
+                        onClick={() => this.props.history.push('/team/' + this.state.team.id + '/' + this.props.year)}
+                    >{this.state.teamName && <div>
+                        {this.state.teamName}
+                    </div>}</div>
+                    <div className="table-item" style={{ width: 72 }}>{this.state.value}</div>
+                </div>
+            )
         return (
             <div style={{ display: 'flex' }}>
                 <div className="table-item" style={{ width: 32 }}>{this.state.pos}</div>
