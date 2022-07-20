@@ -38,14 +38,15 @@ export default class CyclistComponent extends Component {
         let results = cyclist.getResults(year)
         let races = []
         results.forEach(result => {
-            if (!races.includes(result.race))
+            if (result.race && !races.includes(result.race))
                 races.push(result.race)
         })
+        
         let cyclist_results = races.map(race => {
             return {
                 id: race,
                 race: new CalendarEntry(new Race(race), year),
-                results: results.filter(result => result.race === race)
+                results: results.filter(result => result.race == race)
             }
         })
         cyclist_results = cyclist_results.sort((a, b) => a.race.race_data.start_date - b.race.race_data.start_date)
@@ -65,12 +66,12 @@ export default class CyclistComponent extends Component {
                 {this.state.cyclist && <div style={{ display: 'flex'}}>
                     {this.state.cyclist.getContractYears().map(year =>
                         this.state.year == year
-                        ? <h2 style={{ marginLeft: 16, marginTop: 0, color: 'steelblue' }}>{this.state.year}</h2>
-                        : <h2 className="select-year" style={{ marginLeft: 16, marginTop: 0 }} onClick={() => this.props.history.push('/cyclist/' + this.state.cyclist.id + '/' + year)}>{year}</h2>)}
+                        ? <h2 style={{ marginLeft: 16, marginTop: 0, color: 'steelblue' }} key={year}>{this.state.year}</h2>
+                        : <h2 className="select-year" style={{ marginLeft: 16, marginTop: 0 }} key={year} onClick={() => this.props.history.push('/cyclist/' + this.state.cyclist.id + '/' + year)}>{year}</h2>)}
                 </div>}
                 {this.state.results && <div>
                     {this.state.results.map(result => <CyclistResult 
-                        key={result.id} race={result.race} results={result.results} year={this.state.year} history={this.props.history}/>)}
+                        key={this.state.year + '-' + result.id} race={result.race} results={result.results} year={this.state.year} history={this.props.history}/>)}
                 </div>}
             </div>
         )

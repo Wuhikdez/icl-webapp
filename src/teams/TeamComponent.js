@@ -37,17 +37,14 @@ export default class TeamComponent extends Component {
         return (
             <div style={{ marginLeft: 180 }}>
                 {this.state.teamSeason && <div style={{ display: 'flex' }}>
-                    {/*<div style={{ marginTop: 14, marginRight: 8 }}>
-                        <Flag tag={this.state.race_data.country.getFlagId()} size={40} />
-                    </div>*/}
                     <h2>{this.state.teamSeason.name}</h2>
                     {this.state.team.getSeasons().map(year =>
                         this.state.year == year
-                        ? <h2 style={{ marginLeft: 16, color: 'steelblue' }}>{this.state.year}</h2>
-                        : <h2 className="select-year" style={{ marginLeft: 16 }} onClick={() => this.props.history.push('/team/' + this.state.team.id + '/' + year)}>{year}</h2>)}
+                        ? <h2 style={{ marginLeft: 16, color: 'steelblue' }} key={year}>{this.state.year}</h2>
+                        : <h2 className="select-year" style={{ marginLeft: 16 }} key={year} onClick={() => this.props.history.push('/team/' + this.state.team.id + '/' + year)}>{year}</h2>)}
                 </div>}
                 <div style={{ width: 320 }}>
-                    {this.state.cyclists && this.state.cyclists.map(cyclist => <div id={cyclist.id} className="table-item-link" style={{ width: 200 }} style={{ display: 'flex' }}
+                    {this.state.cyclists && this.state.cyclists.map(cyclist => <div id={cyclist.id} key={cyclist.id} className="table-item-link" style={{ width: 200, display: 'flex' }}
                         onClick={() => this.props.history.push('/cyclist/' + cyclist.id + '/' + this.state.year)}>
                         <div style={{ marginTop: 0 }}>
                             <Flag tag={cyclist.getFlagId()} size={18} />

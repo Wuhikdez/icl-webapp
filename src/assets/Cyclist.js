@@ -1,7 +1,6 @@
 import cyclists from '../data/cyclists.json'
 import Region from './Region'
 import results from './Results'
-import Race from './Race'
 
 class Cyclist {
 
@@ -44,12 +43,14 @@ class Cyclist {
         let cyclist_results = []
         results(year).forEach(x => {
             x.results.forEach(y => {
+                let isParticipating = x.results.find(result => result.tables.tables.find(table => table.tag === 'main')?.rows.find(row => row.cyc_id === this.id)) != null;
                 let tables = y.tables.tables
-                let main = tables.find(table => table.tag === 'main')
-                if (main && x.id && main.rows.find(row => row.cyc_id === this.id)) {
+                let team = this.getTeam(year);
+                
+                if (isParticipating) {
                     //let race = new Race(x.id).getSeason(year)
                     tables.forEach(table => {
-                        let cyc_row = table.rows.find(row => row.cyc_id === this.id)
+                        let cyc_row = table.rows.find(row => row.cyc_id === this.id || (!row.cyc_id && row.team_id === team))
                         if (cyc_row)
                             cyclist_results.push({
                                 race: x.id,
